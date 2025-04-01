@@ -1,1 +1,310 @@
-this is an minor project
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>headache assistance</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HeadacheAssist</div>
+                <div class="user-controls">
+                    <button class="emergency-btn">Emergency</button>
+                    <div class="avatar">👤</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="dashboard">Dashboard</div>
+            <div class="tab" data-tab="chatbot">AI Chatbot</div>
+            <div class="tab" data-tab="tracking">Trigger Tracking</div>
+            <div class="tab" data-tab="monitor">Pain Monitor</div>
+            <div class="tab" data-tab="devices">Device Integration</div>
+            <div class="tab" data-tab="treatment">Treatment</div>
+        </div>
+        
+        <div class="content">
+            <!-- Dashboard Section -->
+            <div class="section active" id="dashboard">
+                <div class="card">
+                    <div class="card-title">Headache Assessment</div>
+                    <div class="pain-monitor">
+                        <p>How would you rate your current pain level?</p>
+                        <div class="pain-level-indicator">
+                            <div class="pain-level-fill" id="pain-fill"></div>
+                        </div>
+                        <div class="pain-level-display">Current pain level: <span id="pain-value">0</span>/10</div>
+                        <div class="pain-buttons">
+                            <button class="pain-button active" data-value="0">0</button>
+                            <button class="pain-button" data-value="1">1</button>
+                            <button class="pain-button" data-value="2">2</button>
+                            <button class="pain-button" data-value="3">3</button>
+                            <button class="pain-button" data-value="4">4</button>
+                            <button class="pain-button" data-value="5">5</button>
+                            <button class="pain-button" data-value="6">6</button>
+                            <button class="pain-button" data-value="7">7</button>
+                            <button class="pain-button" data-value="8">8</button>
+                            <button class="pain-button" data-value="9">9</button>
+                            <button class="pain-button" data-value="10">10</button>
+                        </div>
+                        <button class="action-button" id="classify-btn">Classify My Headache</button>
+                    </div>
+                    
+                    <div class="result-box" id="classification-result" style="display: none;">
+                        <div class="result-title">AI Classification Result:</div>
+                        <p>Based on your symptoms, you likely have a <strong>Migraine</strong>.</p>
+                        <div style="margin-top: 15px;">
+                            <strong>Recommended Actions:</strong>
+                            <ul style="margin-left: 20px;">
+                                <li>Rest in a dark, quiet room</li>
+                                <li>Apply cold compress to forehead</li>
+                                <li>Stay hydrated</li>
+                                <li>Consider taking prescribed medication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Recent Insights</div>
+                    <div class="insight-item">
+                        <div class="insight-title">Pattern Detected</div>
+                        <p>Headaches occur most frequently on weekdays around 3 PM.</p>
+                        <p>Potential triggers: Extended screen time, stress.</p>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-title">Lifestyle Impact</div>
+                        <p>Sleep quality shows strong correlation with headache frequency.</p>
+                        <p>Recommendation: Aim for 7-8 hours of sleep each night.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chatbot Section -->
+            <div class="section" id="chatbot">
+                <div class="card">
+                    <div class="card-title">AI Headache Assistant</div>
+                    <div class="chat-container" id="chat-messages">
+                        <div class="chat-message bot">
+                            <div class="message-bubble">
+                                Hello! I'm your AI headache assistant. How can I help you today? I can answer questions about your symptoms, suggest remedies, or help track potential triggers.
+                            </div>
+                        </div>
+                        <!-- Messages will be added here by JavaScript -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input-field" placeholder="Type your message here...">
+                        <button class="action-button" id="send-message" style="margin-top: 0; width: auto;">Send</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trigger Tracking Section -->
+            <div class="section" id="tracking">
+                <div class="card">
+                    <div class="card-title">Track Potential Triggers</div>
+                    <button class="action-button" id="new-trigger-btn">Record New Headache Episode</button>
+                    
+                    <div class="trigger-form" id="trigger-form">
+                        <div class="form-group">
+                            <label>Date & Time:</label>
+                            <input type="datetime-local">
+                        </div>
+                        <div class="form-group">
+                            <label>Pain Level (1-10):</label>
+                            <input type="number" min="1" max="10" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Duration:</label>
+                            <select>
+                                <option>Less than 1 hour</option>
+                                <option>1-3 hours</option>
+                                <option>3-6 hours</option>
+                                <option>6-12 hours</option>
+                                <option>12-24 hours</option>
+                                <option>More than 24 hours</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Common Triggers:</label>
+                            <div class="trigger-tags">
+                                <div class="trigger-tag">Stress</div>
+                                <div class="trigger-tag">Lack of Sleep</div>
+                                <div class="trigger-tag">Dehydration</div>
+                                <div class="trigger-tag">Alcohol</div>
+                                <div class="trigger-tag">Caffeine</div>
+                                <div class="trigger-tag">Screen Time</div>
+                                <div class="trigger-tag">Weather Change</div>
+                                <div class="trigger-tag">Skipped Meal</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Notes:</label>
+                            <textarea rows="3" placeholder="Any additional details..."></textarea>
+                        </div>
+                        <button class="action-button">Save Episode</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">AI Analysis of Triggers</div>
+                    <div class="analysis-chart">
+                        [Chart Visualization Would Appear Here]
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-title">Primary Triggers Identified</div>
+                        <p>Based on your tracking history, these factors most correlate with your headaches:</p>
+                        <ol style="margin-left: 20px;">
+                            <li>Sleep deprivation (78% correlation)</li>
+                            <li>Prolonged screen time (65% correlation)</li>
+                            <li>Caffeine consumption (59% correlation)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pain Monitor Section -->
+            <div class="section" id="monitor">
+                <div class="card">
+                    <div class="card-title">Real-Time Pain Monitoring</div>
+                    <div class="camera-feed">
+                        [Camera Feed Would Appear Here]
+                    </div>
+                    <p style="margin-bottom: 15px;">Our AI can analyze facial expressions to detect pain intensity. Position your face in the camera frame and keep a neutral expression.</p>
+                    <button class="action-button">Activate Camera Analysis</button>
+                    
+                    <div class="result-box" style="margin-top: 20px; display: none;" id="camera-result">
+                        <div class="result-title">Analysis Result:</div>
+                        <p>Detected pain level: <strong>Medium</strong></p>
+                        <p>Facial tension indicators suggest a tension-type headache.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Voice Pattern Analysis</div>
+                    <p style="margin-bottom: 15px;">Our system can analyze voice patterns for stress indicators that may relate to headache development.</p>
+                    <button class="action-button">Start Voice Analysis</button>
+                    
+                    <div style="margin-top: 20px; display: none;" id="voice-result">
+                        <div class="result-box">
+                            <div class="result-title">Voice Analysis Result:</div>
+                            <p>Detected stress level: <strong>Elevated</strong></p>
+                            <p>Voice patterns indicate increased tension which may contribute to headache development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Device Integration Section -->
+            <div class="section" id="devices">
+                <div class="card">
+                    <div class="card-title">Connected Devices</div>
+                    
+                    <div class="device-card">
+                        <div class="device-icon">⌚</div>
+                        <div class="device-info">
+                            <div class="device-name">Apple Watch</div>
+                            <div class="device-status">Connected - Monitoring heart rate and sleep patterns</div>
+                        </div>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    
+                    <div class="device-card">
+                        <div class="device-icon">💪</div>
+                        <div class="device-info">
+                            <div class="device-name">Fitbit Charge</div>
+                            <div class="device-status">Not connected</div>
+                        </div>
+                        <div class="toggle-switch"></div>
+                    </div>
+                    
+                    <div class="device-card">
+                        <div class="device-icon">🏠</div>
+                        <div class="device-info">
+                            <div class="device-name">Smart Home Environment Sensors</div>
+                            <div class="device-status">Connected - Monitoring air quality and lighting</div>
+                        </div>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    
+                    <button class="action-button">Connect New Device</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Wearable Insights</div>
+                    <div class="insight-item">
+                        <div class="insight-title">Sleep Analysis</div>
+                        <p>Your sleep quality has been declining over the past week (average 5.7hrs/night).</p>
+                        <p>This correlates with increased headache frequency.</p>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-title">Heart Rate Patterns</div>
+                        <p>Elevated heart rate detected 2-3 hours before recent headache episodes.</p>
+                        <p>Consider relaxation techniques when you receive alerts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Treatment Section -->
+            <div class="section" id="treatment">
+                <div class="card">
+                    <div class="card-title">Personalized Treatment Suggestions</div>
+                    
+                    <div class="medication-list">
+                        <h3 style="margin-bottom: 10px;">Recommended Medications</h3>
+                        <div class="medication-item">
+                            <div class="medication-name">Ibuprofen (200-400mg)</div>
+                            <div class="medication-info">Good for tension headaches and mild migraines. Take with food to reduce stomach irritation.</div>
+                        </div>
+                        <div class="medication-item">
+                            <div class="medication-name">Sumatriptan</div>
+                            <div class="medication-info">Effective for migraine relief. Take at first sign of migraine.</div>
+                        </div>
+                        <p style="font-style: italic; margin-top: 10px; font-size: 14px;">Always consult with your doctor before starting any medication.</p>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px;">Natural Remedies</h3>
+                    <div class="remedy-list">
+                        <div class="remedy-item">
+                            <div class="remedy-icon">💧</div>
+                            <div class="remedy-name">Hydration</div>
+                        </div>
+                        <div class="remedy-item">
+                            <div class="remedy-icon">🧘</div>
+                            <div class="remedy-name">Meditation</div>
+                        </div>
+                        <div class="remedy-item">
+                            <div class="remedy-icon">❄️</div>
+                            <div class="remedy-name">Cold Compress</div>
+                        </div>
+                        <div class="remedy-item">
+                            <div class="remedy-icon">🌿</div>
+                            <div class="remedy-name">Peppermint Oil</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Emergency Resources</div>
+                    <p>If you experience any of these symptoms, seek immediate medical attention:</p>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Sudden, severe headache unlike any previous headache</li>
+                        <li>Headache with fever, stiff neck, confusion, seizures, double vision, weakness, or numbness</li>
+                        <li>Headache after a head injury</li>
+                        <li>Chronic headache that worsens after coughing, exertion, or sudden movement</li>
+                    </ul>
+                    <button class="action-button" style="background-color: #ff4757;">Find Nearby Emergency Care</button>
+                    <button class="action-button" style="margin-top: 10px;">Connect to Telemedicine</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </body>
+</html>
+       
