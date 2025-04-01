@@ -1,7 +1,7 @@
 <h1 align="center">🤖 Headache Assist</h1>
 
 <p align="center">
-  <img src="./assets/logo.png" alt="Headache Assist Logo">
+  <img src="./assets/logo.png" alt="Headache Assist Logo" size="150px">
 </p>
 
 <p align="center">
